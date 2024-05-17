@@ -1,5 +1,5 @@
 """
-ASGI config for pace_remember project.
+ASGI config for place_remeber project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pace_remember.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'place_remeber.settings')
 
 application = get_asgi_application()
