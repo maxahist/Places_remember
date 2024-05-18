@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('remembers.urls')),
+    path('', include('social_django.urls'), name='vkauth'),
     path('admin/', admin.site.urls),
 ]
