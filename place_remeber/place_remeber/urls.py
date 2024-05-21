@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('remembers.urls')),
-    path('', include('social_django.urls'), name='vkauth'),
+    path('', include('remembers.urls', namespace='remembers')),
+    path('', include('users.urls', namespace='users')),
+    path('', include('social_django.urls')),
     path('admin/', admin.site.urls),
 ]

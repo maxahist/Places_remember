@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'social_django',
     'remembers',
-    # 'user',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +85,7 @@ DATABASES = {
         # 'ENGINE': "django.db.backends.postgresql",
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         # 'NAME': BASE_DIR / 'db.sqlite3',
-        "NAME": "placeremember",
+        "NAME": "qwe",
         "USER": "hist",
     }
 }
@@ -147,6 +147,6 @@ SOCIAL_AUTH_JSONFIELD_ENABLED = True
 SOCIAL_AUTH_VK_OAUTH2_KEY = '51926124'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'CxZOe9702rZ66A8lgOwx'
 
-LOGIN_REDIRECT_URL = 'localhost'
+LOGIN_REDIRECT_URL = 'remembers:main'
 
-# AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = 'users.User'

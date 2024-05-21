@@ -1,6 +1,9 @@
 from django.urls import path, include
-from remembers.views import main
+from .views import main
+
+
+app_name = 'remembers'
 
 urlpatterns = [
-    path('', main)
+    path('', main, name='main')
 ]

@@ -26,6 +26,7 @@
         label {
             display: block;
             margin-bottom: 10px;
+            margin-right: 20px;
         }
         
         input[type="text"],
@@ -55,12 +56,15 @@
 <body>
     <div class="container">
         <h1>Login</h1>
-        <form>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username">
+        <form method="post" action="{% url 'users:login' %}">
+            {% csrf_token %}
+            {% for field in form %}
+            <label for="{{ field.id_for_label }}">
+                {{ field.label }} {{ field}}
+
+            </label>
+            {% endfor %}
             
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password">
             
             <input type="submit" value="Login">
         </form>
