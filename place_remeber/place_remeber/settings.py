@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'social_django',
+    'leaflet',
     'remembers',
     'users',
 ]
@@ -150,3 +151,10 @@ SOCIAL_AUTH_VK_OAUTH2_SECRET = 'CxZOe9702rZ66A8lgOwx'
 LOGIN_REDIRECT_URL = 'remembers:main'
 
 AUTH_USER_MODEL = 'users.User'
+
+LEAFLET_WIDGET_ATTRS = {
+    'map_height': '500px',
+    'map_width': '50%',
+    'display_raw': 'true',
+    'map_srid': 4326,
+}

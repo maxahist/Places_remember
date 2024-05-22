@@ -1,0 +1,130 @@
+{% load leaflet_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post Sharing Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .remember {
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 10px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .remember-form {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .remember-form input, .remember-form textarea {
+            width: 95%;
+            margin-right: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+
+        }
+    </style>
+    {% leaflet_js plugins="forms" %}
+    {% leaflet_css plugins="forms" %}
+</head>
+<body>
+    <header>
+        <img src="avatar.jpg" alt="User Avatar" class="avatar">
+        <h1>Post Sharing Website</h1>
+    </header>
+
+    <nav>
+        <a href="{% url 'remembers:main' %}">Home</a>
+    </nav>
+
+    <main>
+        <div class='remember'>
+        {%if is_edit%}
+            <form method='post' action="{% url 'remembers:remember_edit' remember_id %}">
+        {%else%}
+            <form method='post' action="{% url 'remembers:remember_create' %}">
+        {%endif%}
+            {% csrf_token %}
+            <div class='remember-form'>
+                <p>{{form.name.label}}</p>{{form.name}}
+            </div>
+            <div class='remember-form'>
+                <p>{{form.description.label}}</p> {{form.description}}
+            </div>
+            <div class='remember-form'>
+                <p>{{form.location.label}}</p> {{form.location}}
+            </div>
+
+            <input type="submit" value="Сохранить">
+        </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>Place Remember </p>
+    </footer>
+</body>
+</html>

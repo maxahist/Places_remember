@@ -1,28 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PlaceRemeber</title>
+    <title>Post Sharing Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .post {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .post h2 {
+            margin-top: 0;
+        }
+
+        .post p {
+            margin-bottom: 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Head</h1>
+        <img src="avatar.jpg" alt="User Avatar" class="avatar">
+        {{user}}
+        <h1>Post Sharing Website</h1>
     </header>
+
     <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">LogIn</a></li>
-            <li><a href="#">{{user}}</a></li>
-            
-            <li><a href="/login/vk-oauth2">Vkk</a></li>
-        </ul>
+        <a href="#">Home</a>
+        <a href="{% url 'remembers:remember_create' %}">Создать Воспоминание</a>
     </nav>
-    
+
     <main>
-        <p>main</p>
+        {% for remember in remembers %}
+        <div class="post">
+            
+                <a href="{% url 'remembers:remember_edit' remember.id %}"> <h2>{{remember.name}}</h2></a>
+                <p>{{remember.description}}</p>
+            
+        </div>
+        {% endfor %}
+        {% comment %} <div class="post">
+            <h2>Post Title 1</h2>
+            <p>This is the content of the first post.</p>
+        </div> {% endcomment %}
+
     </main>
-    
+
     <footer>
-        <p>Place Remember. 2024</p>
+        <p>Place Remember </p>
     </footer>
 </body>
 </html>
