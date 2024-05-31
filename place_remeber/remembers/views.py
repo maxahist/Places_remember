@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
+from allauth.socialaccount.models import SocialAccount
 
 from .models import Remember
 from .forms import RememberForm
@@ -7,10 +8,13 @@ from .forms import RememberForm
 
 @login_required
 def main(request):
-    user = request.user
+    user=request.user
+    user_au = SocialAccount.objects.get(user=request.user).extra_data
     remembers = Remember.objects.all().filter(author=user)
 
-    return render(request, 'main.html', {'remembers':remembers})
+    return render(request, 'main.html', {'remembers':remembers,
+                                         'user':user,
+                                         'user_au': user_au})
 
 
 @login_required

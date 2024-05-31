@@ -54,6 +54,7 @@
     </style>
 </head>
 <body>
+    {% load socialaccount %}
     <div class="container">
         <h1>Login</h1>
         <form method="post" action="{% url 'users:login' %}">
@@ -68,6 +69,8 @@
             
             <input type="submit" value="Login">
         </form>
-    </div>
+        {% comment %} <li><a href="{% provider_login_url "mailru" %}">mailRu</a></li> {% endcomment %}
+        <li><a href="{% provider_login_url "github" %}">github</a></li>
+
 </body>
 </html>

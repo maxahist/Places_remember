@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-02uxb!h_4j*h7s2pfsq0%#(*sc5k9%+_1329(m6db2@g%8w=6k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -38,8 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'social_django',
+    'django_extensions',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.mailru',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.github',
     'leaflet',
+    'sslserver',
     'remembers',
     'users',
 ]
@@ -52,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'place_remeber.urls'
@@ -67,8 +75,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -87,7 +93,10 @@ DATABASES = {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         # 'NAME': BASE_DIR / 'db.sqlite3',
         "NAME": "qwe",
-        "USER": "hist",
+        "USER": "postgres",
+        "PASSWORD": "postgres",
+        "HOST": "db",
+        "PORT": "5432",
     }
 }
 
@@ -111,8 +120,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.vk.VKOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'social_core.backends.vk.VKOAuth2',
+    # 'rest_framework_social_oauth2.backends.DjangoOAuth'
+    
 
 )
 
@@ -157,4 +169,26 @@ LEAFLET_WIDGET_ATTRS = {
     'map_width': '50%',
     'display_raw': 'true',
     'map_srid': 4326,
+}
+
+# REST_FRAMEWORK = {
+#     "DEFAULT_AUTHENTICATION_CLASSES":[
+#         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+#         'rest_framework_social_oauth2.authentication.SocialAuthentication',
+#     ]
+# }
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'mailru': {
+#         'APP': {
+#             'client_id': '1b89fce876aa4ba3847d9c581cf85f8e',
+#             'secret': '9e60e76fdca846a8bfba0533ccfba4b1',
+#             'key': '',
+#         }
+#     }
+# }
+
+SOCIALACCOUNT_FORMS = {
+    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+    'signup': 'allauth.socialaccount.forms.SignupForm',
 }

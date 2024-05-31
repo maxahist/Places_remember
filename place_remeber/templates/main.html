@@ -74,17 +74,22 @@
 </head>
 <body>
     <header>
-        <img src="avatar.jpg" alt="User Avatar" class="avatar">
+        <img src={{user_au.avatar_url}} alt="User Avatar" class="avatar">
         {{user}}
         <h1>Post Sharing Website</h1>
     </header>
 
     <nav>
         <a href="#">Home</a>
+        <a href="/login/vk-oauth2">Vkk</a>
         <a href="{% url 'remembers:remember_create' %}">Создать Воспоминание</a>
+
     </nav>
 
     <main>
+        {% if not remembers%}
+        <p> У вас нету воспоминоний</p>
+        {% else %}
         {% for remember in remembers %}
         <div class="post">
             
@@ -93,6 +98,7 @@
             
         </div>
         {% endfor %}
+        {% endif %}
         {% comment %} <div class="post">
             <h2>Post Title 1</h2>
             <p>This is the content of the first post.</p>
@@ -103,5 +109,7 @@
     <footer>
         <p>Place Remember </p>
     </footer>
+    <script src="https://oauth.mail.ru/sdk/v0.14.0/oauth.js"></script>
+
 </body>
 </html>
