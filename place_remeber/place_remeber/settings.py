@@ -88,15 +88,14 @@ WSGI_APPLICATION = 'place_remeber.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'ENGINE': "django.db.backends.postgresql",
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        # 'NAME': BASE_DIR / 'db.sqlite3',
         "NAME": "qwe",
         "USER": "postgres",
         "PASSWORD": "postgres",
         "HOST": "db",
         "PORT": "5432",
+        # "NAME": "qwe",
+        # "USER": "hist",
     }
 }
 
@@ -146,7 +145,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -192,3 +193,11 @@ SOCIALACCOUNT_FORMS = {
     'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
     'signup': 'allauth.socialaccount.forms.SignupForm',
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost', 'http://127.0.0.1', 'https://127.0.0.1', 'https://localhost']
+
+CORS_ORIGIN_WHITELIST = ['http://localhost', 'http://127.0.0.1', 'https://127.0.0.1', 'https://localhost',]
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'

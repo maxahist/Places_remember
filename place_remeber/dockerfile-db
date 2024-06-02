@@ -1,0 +1,7 @@
+FROM postgres:13
+
+
+
+RUN apt-get update && apt-get  install postgis -y postgresql-13-postgis-3-scripts
+
+CMD ["/usr/local/bin/docker-entrypoint.sh","postgres"]

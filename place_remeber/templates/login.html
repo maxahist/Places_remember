@@ -20,57 +20,33 @@
         
         h1 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
         }
         
-        label {
-            display: block;
-            margin-bottom: 10px;
-            margin-right: 20px;
-        }
         
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            margin-bottom: 20px;
-        }
-        
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
+        a {
+            text-align: center;
+            padding: 20px;
             background-color: #4CAF50;
             color: #fff;
-            border: none;
             border-radius: 3px;
             cursor: pointer;
+            
+        }
+        .link {
+            margin-left: 120px;
+            margin-bottom: 30px;
         }
         
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
     {% load socialaccount %}
     <div class="container">
         <h1>Login</h1>
-        <form method="post" action="{% url 'users:login' %}">
-            {% csrf_token %}
-            {% for field in form %}
-            <label for="{{ field.id_for_label }}">
-                {{ field.label }} {{ field }}
-
-            </label>
-            {% endfor %}
-            
-            
-            <input type="submit" value="Login">
-        </form>
-        {% comment %} <li><a href="{% provider_login_url "mailru" %}">mailRu</a></li> {% endcomment %}
-        <li><a href="{% provider_login_url "github" %}">github</a></li>
+        <div class = 'link'>
+            <a href="{% provider_login_url "vk" %}">Vk</a>
+        </div>
 
 </body>
 </html>
