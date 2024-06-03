@@ -17,6 +17,7 @@ services:
     build: 
       context: .
       dockerfile: dockerfile
+     
     volumes:
       - static_volume:/app/static
     expose:

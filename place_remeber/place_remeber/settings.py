@@ -180,15 +180,15 @@ LEAFLET_WIDGET_ATTRS = {
 #     ]
 # }
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'mailru': {
-#         'APP': {
-#             'client_id': '1b89fce876aa4ba3847d9c581cf85f8e',
-#             'secret': '9e60e76fdca846a8bfba0533ccfba4b1',
-#             'key': '',
-#         }
-#     }
-# }
+SOCIALACCOUNT_PROVIDERS = {
+    'vk': {
+        'APP': {
+            'client_id': '51926124',
+            'secret': 'CxZOe9702rZ66A8lgOwx',
+            'key': '005dcc62005dcc62005dcc62990345980e0005d005dcc626615967a26e91cb08f8fddcc',
+        }
+    }
+}
 
 SOCIALACCOUNT_FORMS = {
     'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
