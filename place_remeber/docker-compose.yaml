@@ -4,7 +4,7 @@ services:
   db:
     build:
       context: .
-      dockerfile: dockerfile-db
+      dockerfile: dockerfile-db  
     restart: always
     env_file:
       - ./.env
@@ -13,17 +13,34 @@ services:
       - postgres_data:/var/lib/postgresql/data/
 
 
-  web:
+  pre_web:
     build: 
       context: .
       dockerfile: dockerfile
-     
+    command:
+      - /bin/sh
+      - -c
+      - |
+        python manage.py migrate
+        python manage.py collectstatic --noinput
     volumes:
       - static_volume:/app/static
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+
+  web:
+    build:
+      context: .
+    restart: always
+    command: gunicorn place_remeber.wsgi:application --bind 0.0.0.0:8000
+    env_file:
+      - ./.env
     expose:
       - "8000"
     depends_on:
-      - db
+      - pre_web
 
   nginx:
     image: nginx:1.23-alpine

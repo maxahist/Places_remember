@@ -8,7 +8,10 @@ class Remember(models.Model):
     description = models.TextField(verbose_name="Описание")
     location = models.PointField(verbose_name="Локация")
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="remember", verbose_name="Автор"
+        User,
+        on_delete=models.CASCADE,
+        related_name="remember",
+        verbose_name="Автор",
     )
     created = models.DateTimeField(
         auto_now_add=True,

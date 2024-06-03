@@ -11,7 +11,3 @@ RUN apt-get update &&\
     apt-get install -y binutils libproj-dev gdal-bin
 
 COPY . .
-
-CMD ["python3", "manage.py", "migrate"]
-CMD ["python3", "manage.py", "collectstatic", "--noinput"]
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "place_remeber.wsgi:application"]

@@ -13,7 +13,9 @@ def main(request):
     remembers = Remember.objects.all().filter(author=user)
 
     return render(
-        request, "main.html", {"remembers": remembers, "user": user, "user_au": user_au}
+        request,
+        "main.html",
+        {"remembers": remembers, "user": user, "user_au": user_au},
     )
 
 
@@ -51,4 +53,6 @@ def remember_create(request):
             remember.save()
             return redirect("remembers:main")
     form = RememberForm()
-    return render(request, "remember_edit.html", {"form": form, "user_au": user_au})
+    return render(
+        request, "remember_edit.html", {"form": form, "user_au": user_au}
+    )

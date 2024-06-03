@@ -26,7 +26,9 @@ class TestRememberModel(TestCase):
 
     def setUp(self):
         self.guest_client = Client()
-        self.user = User.objects.create_user(username="tester", password="tester")
+        self.user = User.objects.create_user(
+            username="tester", password="tester"
+        )
         self.auth_client = Client()
         # self.auth_client.force_login(self.user)
         SocialAccount.objects.create(
@@ -51,7 +53,9 @@ class TestRememberModel(TestCase):
 
         for field, value in remember_verbose.items():
             with self.subTest(field=field):
-                self.assertEqual(remember._meta.get_field(field).verbose_name, value)
+                self.assertEqual(
+                    remember._meta.get_field(field).verbose_name, value
+                )
 
     def test_guest_access(self):
         path_list = (
