@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+
 import os
 from pathlib import Path
 
@@ -20,75 +21,82 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-02uxb!h_4j*h7s2pfsq0%#(*sc5k9%+_1329(m6db2@g%8w=6k'
+SECRET_KEY = "django-insecure-02uxb!h_4j*h7s2pfsq0%#(*sc5k9%+_1329(m6db2@g%8w=6k"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = [
+    "*",
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.gis',
-    'django_extensions',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.mailru',
-    'allauth.socialaccount.providers.vk',
-    'allauth.socialaccount.providers.github',
-    'leaflet',
-    'sslserver',
-    'remembers',
-    'users',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.gis",
+    "django_extensions",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.mailru",
+    "allauth.socialaccount.providers.vk",
+    "allauth.socialaccount.providers.github",
+    "leaflet",
+    "sslserver",
+    "remembers",
+    "users",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
-ROOT_URLCONF = 'place_remeber.urls'
+ROOT_URLCONF = "place_remeber.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates',)],
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [
+            os.path.join(
+                BASE_DIR,
+                "templates",
+            )
+        ],
         # 'DIRS': [os.path.join(BASE_DIR, 'templates', 'allauth')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'place_remeber.wsgi.application'
+WSGI_APPLICATION = "place_remeber.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         "NAME": "qwe",
         "USER": "postgres",
@@ -106,35 +114,32 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
     # 'social_core.backends.vk.VKOAuth2',
     # 'rest_framework_social_oauth2.backends.DjangoOAuth'
-    
-
 )
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -144,33 +149,35 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
 
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
 SOCIAL_AUTH_JSONFIELD_ENABLED = True
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = '51926124'
-SOCIAL_AUTH_VK_OAUTH2_SECRET = 'CxZOe9702rZ66A8lgOwx'
+SOCIAL_AUTH_VK_OAUTH2_KEY = "51926124"
+SOCIAL_AUTH_VK_OAUTH2_SECRET = "CxZOe9702rZ66A8lgOwx"
 
-LOGIN_REDIRECT_URL = 'remembers:main'
+LOGIN_URL = "users:login"
 
-AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = "remembers:main"
+
+AUTH_USER_MODEL = "users.User"
 
 LEAFLET_WIDGET_ATTRS = {
-    'map_height': '500px',
-    'map_width': '50%',
-    'display_raw': 'true',
-    'map_srid': 4326,
+    "map_height": "500px",
+    "map_width": "50%",
+    "display_raw": "true",
+    "map_srid": 4326,
 }
 
 # REST_FRAMEWORK = {
@@ -181,26 +188,36 @@ LEAFLET_WIDGET_ATTRS = {
 # }
 
 SOCIALACCOUNT_PROVIDERS = {
-    'vk': {
-        'APP': {
-            'client_id': '51926124',
-            'secret': 'CxZOe9702rZ66A8lgOwx',
-            'key': '005dcc62005dcc62005dcc62990345980e0005d005dcc626615967a26e91cb08f8fddcc',
+    "vk": {
+        "APP": {
+            "client_id": "51926124",
+            "secret": "CxZOe9702rZ66A8lgOwx",
+            "key": "005dcc62005dcc62005dcc62990345980e0005d005dcc626615967a26e91cb08f8fddcc",
         }
     }
 }
 
 SOCIALACCOUNT_FORMS = {
-    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
-    'signup': 'allauth.socialaccount.forms.SignupForm',
+    "disconnect": "allauth.socialaccount.forms.DisconnectForm",
+    "signup": "allauth.socialaccount.forms.SignupForm",
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost', 'http://127.0.0.1', 'https://127.0.0.1', 'https://localhost']
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost",
+    "http://127.0.0.1",
+    "https://127.0.0.1",
+    "https://localhost",
+]
 
-CORS_ORIGIN_WHITELIST = ['http://localhost', 'http://127.0.0.1', 'https://127.0.0.1', 'https://localhost',]
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost",
+    "http://127.0.0.1",
+    "https://127.0.0.1",
+    "https://localhost",
+]
 
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
-SOCIALACCOUNT_CONNECTIONS_TEMPLATE = 'socialaccount/social.html'
+SOCIALACCOUNT_CONNECTIONS_TEMPLATE = "socialaccount/social.html"
