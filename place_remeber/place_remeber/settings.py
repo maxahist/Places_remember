@@ -67,7 +67,8 @@ ROOT_URLCONF = 'place_remeber.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates',)],
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates', 'allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -201,3 +202,5 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost', 'http://127.0.0.1', 'https://127.0.0
 CORS_ORIGIN_WHITELIST = ['http://localhost', 'http://127.0.0.1', 'https://127.0.0.1', 'https://localhost',]
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+
+SOCIALACCOUNT_CONNECTIONS_TEMPLATE = 'socialaccount/social.html'

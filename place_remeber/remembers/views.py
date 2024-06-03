@@ -19,6 +19,7 @@ def main(request):
 
 @login_required
 def remember_edit(request, remember_id):
+    user_au = SocialAccount.objects.get(user=request.user).extra_data
     remember = get_object_or_404(Remember, id=remember_id)
     if remember.author == request.user:
         if request.method == 'POST':
@@ -33,9 +34,11 @@ def remember_edit(request, remember_id):
         return render(request, 'remember_edit.html', 
                       {'form': form, 
                        'remember_id': remember.id,
-                       'is_edit': True})
+                       'is_edit': True,
+                       'user_au': user_au})
     
 def remember_create(request):
+    user_au = SocialAccount.objects.get(user=request.user).extra_data
     if request.method == 'POST':
         form = RememberForm(request.POST)
         if form.is_valid():
@@ -44,5 +47,6 @@ def remember_create(request):
             remember.save()
             return redirect('remembers:main')
     form = RememberForm()
-    return render(request, 'remember_edit.html', {'form': form})
+    return render(request, 'remember_edit.html', {'form': form,
+                                                  'user_au': user_au})
         
